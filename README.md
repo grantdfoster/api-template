@@ -37,17 +37,18 @@
 # create a request class that wraps a Secure or NonSecure base class
 class BasicRequest(NonSecure):
 	# the endpoint for the request
-    endpoints = ['/basic']
+    endpoints = ['/api']
     # the type of request
     def get(self):
     	# return something
         return jsonify(dict(message="Successful Get Request Made!"))
 ```
-### POST Request
+### Secure POST Request
 ```python
 @rest_resource
-class BasicRequest(NonSecure):
-    endpoints = ['/base']
+class BasicRequest(Secure):
+    # request must have an Authorization header!
+    endpoints = ['/api']
 
     def post(self):
     	if request.data:
