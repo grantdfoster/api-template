@@ -8,7 +8,8 @@
 ## Initial Setup
 1. clone this repo
 2. cd into cloned repo
-3. pip install -r requirements.txt
+3. pip install pipenv
+4. pipenv install
 
 ## Local API Development Server
 *run a local API server*
@@ -18,6 +19,9 @@
 *run tests via pytest to verify request endpoints are working*
 1. pytest -v
 
+## Install Packages
+1. pipenv install <package name>
+    
 ![local-development](local-development.png)
 
 ## Create Endpoints
@@ -46,7 +50,7 @@ class BasicRequest(NonSecure):
     endpoints = ['/base']
 
     def post(self):
-        if request.data:
+    	if request.data:
         	return jsonify(request.json)
         else:
         	return abort(400, message='Please Send Data!')
